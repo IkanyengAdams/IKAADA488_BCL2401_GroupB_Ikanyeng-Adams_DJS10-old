@@ -9,7 +9,7 @@ function App() {
  fetch('https://jsonplaceholder.typicode.com/posts')
  .then(response => {
   if (!response.ok) {
-    throw new Error(HTTP error! status: ${response.status});
+    throw new Error(`HTTP error! status: ${response.status}`);
   } else {
     return response.json();
   }
@@ -17,23 +17,23 @@ function App() {
 .then(data => setPosts(data))
 .catch(error => setError(error.message));
 }, []);
-  if (error) {
-    return {error}
-  }
-  return (
-    <div>
-      <h1>blogPost</h1>
-      <ul>
+if (error) {
+  return {error}
+}
+return (
+  <div>
+    <h1>Post</h1>
+    <ul>
 {posts.map(post => (
-  <li key={post.id}>
-    <h2>{post.title}</h2>
-    <p>{post.body}</p>
-  </li>
+<li key={post.id}>
+  <h2>{post.title}</h2>
+  <p>{post.body}</p>
+</li>
 ))}
 </ul>
 
-    </div>
-  );
+  </div>
+);
 
 }
 
