@@ -17,6 +17,23 @@ function App() {
 .then(data => setPosts(data))
 .catch(error => setError(error.message));
 }, []);
+  if (error) {
+    return {error}
+  }
+  return (
+    <div>
+      <h1>blogPost</h1>
+      <ul>
+{posts.map(post => (
+  <li key={post.id}>
+    <h2>{post.title}</h2>
+    <p>{post.body}</p>
+  </li>
+))}
+</ul>
+
+    </div>
+  );
 
 }
 
